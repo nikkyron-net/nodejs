@@ -2,12 +2,6 @@
 
 FROM docker.io/node:18.13.0
 
-ARG email=""
-ARG commit=""
-LABEL "commit"=$commit
-LABEL "maintainer"=$email
-LABEL "rating"="Five Stars" "class"="First Class"
-
 USER root
 
 ENV AP /data/app
