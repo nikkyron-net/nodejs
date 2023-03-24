@@ -10,7 +10,7 @@ jobs:
       - name: create short SHA
         id: create_short_sha
         run: |
-          long=${{ env.GITHUB_SHA }}
+          long=$GITHUB_SHA
           short=${long:0:5}
           echo "::set-output name=shortsha::$short"
           echo "short is $short"
