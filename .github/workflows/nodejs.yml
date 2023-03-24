@@ -13,6 +13,7 @@ jobs:
           long=${{ env.GITHUB_SHA }}
           short=${long:0:5}
           echo "::set-output name=shortsha::$short"
+          echo "short is $short"
 
       -
         name: Set up QEMU
@@ -31,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           build-args: |
-            email="ron@upmyjob.com"
+            email=ron@upmyjob.com
             commit=${{ steps.create_short_sha.outputs.shortsha }}
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs:latest
