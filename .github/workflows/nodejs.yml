@@ -6,6 +6,8 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    outputs:
+      commit: ${{ steps.create_short_sha.outputs.shortsha }}
     # create short commit SHA hash to label image with
     steps:
       - name: create short SHA
@@ -13,7 +15,7 @@ jobs:
         run: |
           long=$GITHUB_SHA
           short=${long:0:6}
-          echo "{shortsha}={$short}" >> $GITHUB_OUTPUT
+          echo "shortsha=$short" >> $GITHUB_OUTPUT
 
       -
         name: Set up QEMU
@@ -33,6 +35,6 @@ jobs:
         with:
           labels: |
             email=ron@upmyjob.com
-            commit=${{ output.shortsha }}
+            commit=${{ outputs.commit }}
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs:latest
