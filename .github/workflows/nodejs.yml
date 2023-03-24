@@ -30,7 +30,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          build_args: |
+          build-args: |
             email="ron@upmyjob.com"
             commit=${{ steps.create_short_sha.outputs.shortsha }}
           push: true
