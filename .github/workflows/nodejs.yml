@@ -35,4 +35,4 @@ jobs:
             email=ron@upmyjob.com
             commit=${{ env.shortsha }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs:18-alpine
